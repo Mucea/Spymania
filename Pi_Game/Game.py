@@ -10,7 +10,9 @@ from sense_hat import SenseHat
 from time import sleep
 #playsound('audio.mp3')
 
+#VARIABILE GLOBALE:
 sense = SenseHat()
+is_playable = [1, 1, 0, 0, 0, 0]
 #CULORI pentru SenseHat:
 black = (0, 0, 0)
 cyan = (0, 255, 255)
@@ -46,6 +48,33 @@ imagine_de_sfarsit_bucata_2 = [
 def afisare_imagine_de_sfarsit_de_nivel_2():
 
 """
+#Imagine pentru nivel inaccesibil
+def not_unlocked():
+    end = [
+        black, black, black, black, black, black, black, black,
+        black, red, red, red, red, red, red, black,
+        black, red, red, black, black, black, red, black,
+        black, red, black, red, black, black, red, black,
+        black, red, black, black, red, black, red, black,
+        black, red, black, black, black, red, red, black,
+        black, black, black, black, black, black, black, black,
+    ]
+    sense.set_pixels(end)
+    sleep(1)
+    
+def unlocked():
+    start = [
+        black, black, black, black, black, black, black, black,
+        black, black, green, green, breen, green, black, black,
+        black, green, green, green, green, green, green, black,
+        black, green, green, green, green, green, green, black,
+        black, green, green, green, green, green, green, black,
+        black, green, green, green, green, green, green, black,
+        black, black, green, green, green, green, black, black,
+        black, black, black, black, black, black, black, black,
+    ]
+    sense.set_pixels(start)
+    sleep(1)
 #Functie de MAIN MENU:
 def MAIN_MENU():
     sense.show_message("Welcome", text_colour = blue, scroll_speed = 0.06)
@@ -53,23 +82,24 @@ def MAIN_MENU():
     sense.show_message("Spymania!", text_colour = green, scroll_speed = 0.06)
     sleep (0.5)
     sense.show_message("Press the joystick in the middle to continue!", text_colour = white, scroll_speed = 0.06)
-    event1 = sense.stick.wait_for_event()
+    event1 = sense.stick.wait_for_event(emptybuffer=True)
     """
     ok = False
     while ok == False:
-        if event1.action == "pressed" or event1.direction == "middle":
+        if event1.action == "pressed" and event1.direction == "middle":
             ok = True
             break
         sense.show_message("Press the joystick in the middle to continue!", text_colour = white, scroll_speed = 0.06)
         sleep (0.5)
     """
     #ZONA DE SELECTARE A NIVELULUI DE JOC
-    if ok == True:
+    if event1.action == "pressed" and event1.direction == "middle":
         sense.show_message("Choose the level you want to play!", text_colour = cyan, scroll_speed = 0.06)
-        event2 = sense.stick.wait_for_event()
         ok1 = False
         position = 0;
         while ok1 == False:
+            event2 = sense.stick.wait_for_event(emptybuffer=True)
+            if event2.action
             if event2.action == "pressed" and event2.direction == "left" and position == 0:
                 position = 0
             elif event2.action == "pressed" and event2.direction == "right" and position == 4:
@@ -79,22 +109,58 @@ def MAIN_MENU():
             elif event2.action == "pressed" and event2.direction == "left" and position > 1:
                 position -= 1
             if (position == 0):
-                #event3 = sense.stick.wait_for_event()
-                #ok2 = False 
-                #while event3.action != "pressed":
-                    sense.show_message("Storyline", text_colour = gold, scroll_speed = 0.06)
-                    #sleep(0.5)
+                sense.show_message("Storyline", text_colour = gold, scroll_speed = 0.06)
+                event3 = sense.stick.wait_for_event(emptybuffer=True)
+                if (event3.action == "pressed" and event3.direction == "middle"):    
+                    if is_playable[position] == 1: 
+                        #Storyline()
+                        unlocked()
+                    else:
+                        not_unlocked()
             elif (position == 1):
                 sense.show_message("Level 1", text_colour = gold, scroll_speed = 0.06)
+                event4 = sense.stick.wait_for_event(emptybuffer=True)
+                if (event4.action == "pressed" and event4.direction == "middle"):    
+                    if is_playable[position] == 1:
+                        #Level_1()
+                        unlocked()
+                    else:
+                        not_unlocked()
             elif (position == 2):
                 sense.show_message("Level 2", text_colour = gold, scroll_speed = 0.06)
+                event5 = sense.stick.wait_for_event(emptybuffer=True)
+                if (event5.action == "pressed" and event5.direction == "middle"):    
+                    if is_playable[position] == 1: 
+                        Level_2()
+                    else:
+                        not_unlocked()
             elif (position == 3):
                 sense.show_message("Level 3", text_colour = gold, scroll_speed = 0.06)
+                event6 = sense.stick.wait_for_event(emptybuffer=True)
+                if (event6.action == "pressed" and event6.direction == "middle"):    
+                    if is_playable[position] == 1: 
+                        Level_3()
+                    else:
+                        not_unlocked()
             elif (position == 4):
-                sense.show_message("Level 4 -> Boss Fight", text_colour = gold, scroll_speed = 0.06)    
+                sense.show_message("Level 4", text_colour = gold, scroll_speed = 0.06)
+                event7 = sense.stick.wait_for_event(emptybuffer=True)
+                if (event7.action == "pressed" and event7.direction == "middle"):    
+                    if is_playable[position] == 1: 
+                        Level_4()
+                    else:
+                        not_unlocked()
+            elif (position == 5):
+                sense.show_message("Level 5 -> Boss Fight", text_colour = gold, scroll_speed = 0.06)
+                event8 = sense.stick.wait_for_event(emptybuffer=True)
+                if (event8.action == "pressed" and event8.direction == "middle"):    
+                    if is_playable[position] == 1: 
+                        Level_5()
+                    else:
+                        not_unlocked()
     sense.clear()
 
 #Aici apelam toate functiile pe care le-am creat
 
-afisare_imagine_de_sfarsit_de_nivel_1()
-#MAIN_MENU()
+#afisare_imagine_de_sfarsit_de_nivel_1()
+MAIN_MENU()
