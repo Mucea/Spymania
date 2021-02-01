@@ -1,0 +1,65 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+body{
+	background-repeat: no-repeat;
+	/*background-attachment: inherit;*/
+	background-size: cover;
+	background-image: url("background.jpg");
+	background-color: black;
+}
+.greeting{
+	font-family: 'Orbitron', monospace;
+	text-align: center;
+	justify-content: center;
+    color: green;
+    font-size: 50px;
+    padding: 80px;
+}
+/*
+.tabs{
+    display: flex;
+    font-size: 22px;
+    color: white;
+    padding-left:5em;
+}
+*/
+ul li{
+    font-family: 'Carter One', cursive;
+    font-size: 25px;
+    justify-content: center;
+    display: inline;
+    margin-left: 40;
+    padding: 0 40px;
+    color: white;
+}
+a{
+    color: white;
+    text-decoration: none;
+}
+.button{
+    position: relative;
+    border: none;
+    color: white;
+    background-color: green;
+    padding: 10px 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.button:hover{
+    background-color: turquoise;
+}
+
+.download-button{
+    padding-top: 225px;
+    align-content: center;
+}
+
+footer p{
+    display: flex;
+    color: white;
+    justify-content: center;
+    margin-top: 420px;
+}
