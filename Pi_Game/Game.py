@@ -28,6 +28,7 @@ purple = (128, 0, 128)
 orange = (255, 140, 0)
 saddlebrown = (139, 69, 19)
 coral = (255, 160, 122)
+grey = (58, 59, 60)
 
 #Aceasta functie va afisa imaginea de sfarsit a tuturor nivelelor (This function will print the ending image for all the levels)
 imagine_de_sfarsit_bucata_1 = [
@@ -157,12 +158,87 @@ def unlocked():
     sleep(1)
     
 #FUNCTIE PENTRU STORYLINE (FUNCTION FOR THE STORYLINE)
+def storyline_level_1():
+    tree = [
+         black, green, green, green, green, green, green, black,
+         black, green, green, green, green, green, green, black,
+         black, green, green, green, green, green, green, black,
+         black, green, green, green, green, green, green, black,
+         black, green, green, green, green, green, green, black,
+         black, black, black, saddlebrown, saddlebrown, black, black, black,
+         black, black, black, saddlebrown, saddlebrown, black, black, black,
+         black, black, black, saddlebrown, saddlebrown, black, black, black,
+    ]
+    sense.set_pixels(tree)
+    """
+    #AICI SCRIEM STORYLINE-UL PENTRU PRIMUL NIVEL (HERE WE WRITE THE STORYLINE FOR THE FIRST LEVEL)
+    text1 = ""
+    storyline1 = text.split(' ')
+    for word in storyline1:
+        print(word)
+    """
+    sleep(5)
+    sense.clear()
+    #sleep(1)
+
+def storyline_level_2():
+    castle = [
+        black, black, black, gold, coral, blue, coral, gold,
+        black, black, black, coral, red, red, red, coral,
+        grey, grey, black, saddlebrown, saddlebrown, black, grey, grey,
+        grey, grey, black, saddlebrown, saddlebrown, black, grey, grey,
+        grey, grey, black, grey, grey, black, grey, grey,
+        grey, grey, grey, grey, grey, grey, grey, grey,
+        grey, grey, grey, grey, grey, grey, grey, grey,
+        grey, grey, grey, grey, grey, grey, grey, grey,
+    ]
+    sense.set_pixels(castle)
+    """
+    #AICI SCRIEM STORYLINE-UL PENTRU AL DOILEA NIVEL (HERE WE WRITE THE STORYLINE FOR THE SECOND LEVEL)
+    text2 = ""
+    storyline2 = text.split(' ')
+    for word in storyline2:
+        print(word)
+    """
+    sleep(5)
+    sense.clear()
+    #sleep(1)
+
+def storyline_level_5():
+    boss = [
+        coral, gold, coral, coral, coral, coral, gold, coral,
+        gold, gold, gold, coral, coral, gold, gold, gold,
+        coral, gold, coral, coral, coral, coral, gold, coral,
+        coral, coral, coral, blue, blue, coral, coral, coral,
+        coral, coral, coral, blue, blue, coral, coral, coral,
+        coral, coral, coral, blue, blue, coral, coral, coral,
+        coral, red, coral, red, coral, red, coral, red,
+        red, coral, red, coral, red, coral, red, coral,
+    ]
+    sense.set_pixels(boss)
+    """
+    #AICI SCRIEM STORYLINE-UL PENTRU AL TREILEA NIVEL (HERE WE WRITE THE STORYLINE FOR THE THIRD LEVEL)
+    text3 = ""
+    storyline3 = text.split(' ')
+    for word in storyline3:
+        print(word)
+    """
+    sleep(5)
+    sense.clear()
+    #sleep(1)
 def Storyline():
+    """
     text = "Spymania is a SenseHat-centred game where Vector the soldier needs to get all the papers in order to find the grand boss who stole a very big and expensive treasure."
     storyline = text.split(' ')
     for word in storyline:
-       sense.show_message(word, text_colour = saddlebrown, scroll_speed = 0.04)
-    print(text)
+        #sense.show_message(word, text_colour = saddlebrown, scroll_speed = 0.04)
+        print(word)
+    """
+    storyline_level_1()
+    storyline_level_2()
+    #storyline_level_3()
+    #storyline_level_4()
+    storyline_level_5()
     afisare_imagine_de_sfarsit_de_nivel_1()
     afisare_imagine_de_sfarsit_de_nivel_2()
     
@@ -172,12 +248,12 @@ def MAIN_MENU():
     sense.show_message("to", text_colour = gold, scroll_speed = 0.05)
     sense.show_message("Spymania!", text_colour = green, scroll_speed = 0.05)
     sleep(0.5)
-    sense.show_message("Press the joystick in the middle to continue to the level selection zone!", text_colour = darker_blue, scroll_speed = 0.05)
+    sense.show_message("Press the joystick in the middle to continue!", text_colour = darker_blue, scroll_speed = 0.05)
     event1 = sense.stick.wait_for_event(emptybuffer = True)
     #IN CAZUL UNEI DORINTE NEPREVAZUTE DE A IESI DIN JOC (IN CASE OF A SUDDEN WISH FOR EXITING THE GAME)
     if event1.action == "pressed" and event1.direction != "middle":
-        sense.show_message("exit? -> press upwards!", text_colour = red, scroll_speed = 0.04)
-        sense.show_message("resume? -> press downwards!", text_colour = green, scroll_speed = 0.04)
+        sense.show_message("exit? -> up!", text_colour = red, scroll_speed = 0.04)
+        sense.show_message("resume? -> down!", text_colour = green, scroll_speed = 0.04)
         event10 = sense.stick.wait_for_event(emptybuffer = True)
         if event10.action == "pressed" and event10.direction == "up":
             ok1 = True
@@ -188,7 +264,7 @@ def MAIN_MENU():
             sense.show_message("Spymania!", text_colour = green, scroll_speed = 0.05)
             return
         elif event10.action == "pressed" and event10.direction != "up":
-            sense.show_message("Press the joystick in the middle to continue to the level selection zone!", text_colour = darker_blue, scroll_speed = 0.05)
+            sense.show_message("Press the joystick in the middle to continue!", text_colour = darker_blue, scroll_speed = 0.05)
             event1 = sense.stick.wait_for_event(emptybuffer = True)
     #ZONA DE SELECTARE A NIVELULUI DE JOC (THE LEVEL SELECTION ZONE)
     elif event1.action == "pressed" and event1.direction == "middle":
@@ -214,6 +290,7 @@ def MAIN_MENU():
                 elif event9.action == "pressed" and event9.direction == "down":
                     sense.show_message("Choose the level you want to play!", text_colour = cyan, scroll_speed = 0.05)
                     event2 = sense.stick.wait_for_event(emptybuffer = True)
+            """
             if event2.action == "pressed" and event2.direction == "left" and position == 0:
                 position = 0
             elif event2.action == "pressed" and event2.direction == "right" and position == 5:
@@ -293,9 +370,12 @@ def MAIN_MENU():
                         locked()
                 elif event8.action == "pressed" and event8.direction != "middle":
                     continue
+            """
+            
     #La finalul programului, dezactivam toate led-urile aprinse de pe SenseHat (At the end of the program, we clear the SenseHat)
     sense.clear()
 
 #Aici apelam toate functiile pe care le-am creat astfel incat jocul sa poata rula (Here we call all the functions we need in order for the game to load)
     
-MAIN_MENU()
+#MAIN_MENU()
+Storyline()
