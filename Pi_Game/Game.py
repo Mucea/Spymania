@@ -29,6 +29,8 @@ orange = (255, 140, 0)
 saddlebrown = (139, 69, 19)
 coral = (255, 160, 122)
 grey = (58, 59, 60)
+toxicgreen = (97, 222, 42)
+darkgreen = (0, 100, 0)
 
 #Aceasta functie va afisa imaginea de sfarsit a tuturor nivelelor (This function will print the ending image for all the levels)
 imagine_de_sfarsit_bucata_1 = [
@@ -182,15 +184,29 @@ def storyline_level_1():
     #sleep(1)
 
 def storyline_level_2():
+    field = [
+        gold, gold, cyan, white, white, cyan, cyan, cyan,
+        gold, cyan, cyan, cyan, cyan, cyan, white, white,
+        cyan, white, white, cyan, cyan, cyan, cyan, cyan,
+        green, green, green, green, green, green, green, green,
+        green, green, green, green, blue, green, green, green,
+        green, red, green, green, darkgreen, green, purple, green,
+        green, darkgreen, green, green, green, green, darkgreen, green,
+        green, green, green, green, green, green, green, green,
+    ]
+    sense.set_pixels(field)
+    sleep(5)
+    sense.clear()
+def storyline_level_3():
     castle = [
-        black, black, black, gold, coral, blue, coral, gold,
-        black, black, black, coral, red, red, red, coral,
-        grey, grey, black, saddlebrown, saddlebrown, black, grey, grey,
-        grey, grey, black, saddlebrown, saddlebrown, black, grey, grey,
-        grey, grey, black, grey, grey, black, grey, grey,
+        black, red, black, black, black, black, red, black,
+        red, red, red, black, black, red, red, red,
+        grey, black, grey, black, black, grey, black, grey,
         grey, grey, grey, grey, grey, grey, grey, grey,
         grey, grey, grey, grey, grey, grey, grey, grey,
-        grey, grey, grey, grey, grey, grey, grey, grey,
+        grey, grey, grey, saddlebrown, saddlebrown, grey, grey, grey,
+        grey, grey, grey, saddlebrown, saddlebrown, grey, grey, grey,
+        grey, grey, grey, saddlebrown, saddlebrown, grey, grey, grey,
     ]
     sense.set_pixels(castle)
     """
@@ -204,16 +220,16 @@ def storyline_level_2():
     sense.clear()
     #sleep(1)
 
-def storyline_level_5():
+def storyline_level_4_and_5():
     boss = [
-        coral, gold, coral, coral, coral, coral, gold, coral,
-        gold, gold, gold, coral, coral, gold, gold, gold,
-        coral, gold, coral, coral, coral, coral, gold, coral,
-        coral, coral, coral, blue, blue, coral, coral, coral,
-        coral, coral, coral, blue, blue, coral, coral, coral,
-        coral, coral, coral, blue, blue, coral, coral, coral,
-        coral, red, coral, red, coral, red, coral, red,
-        red, coral, red, coral, red, coral, red, coral,
+        red, black, black, black, black, black, black, red,
+        red, red, black, black, black, black, red, red,
+        black, red, red, red, red, red, red, black,
+        black, red, blue, black, black, blue, red, black,
+        red, black, gold, blue, blue, gold, black, red,
+        red, toxicgreen, black, black, black, black, toxicgreen, red,
+        black, toxicgreen, toxicgreen, toxicgreen, toxicgreen, toxicgreen, red, black,
+        black, toxicgreen, red, red, red, toxicgreen, black, black,
     ]
     sense.set_pixels(boss)
     """
@@ -236,9 +252,8 @@ def Storyline():
     """
     storyline_level_1()
     storyline_level_2()
-    #storyline_level_3()
-    #storyline_level_4()
-    storyline_level_5()
+    storyline_level_3()
+    storyline_level_4_and_5()
     afisare_imagine_de_sfarsit_de_nivel_1()
     afisare_imagine_de_sfarsit_de_nivel_2()
     
@@ -276,8 +291,8 @@ def MAIN_MENU():
             event2 = sense.stick.wait_for_event(emptybuffer = True)
             #IN CAZUL UNEI DORINTE NEPREVAZUTE DE A IESI DIN JOC (IN CASE OF A SUDDEN WISH FOR EXITING THE GAME)
             if event2.action == "pressed" and event2.direction == "up":
-                sense.show_message("exit? -> press upwards!", text_colour = red, scroll_speed = 0.04)
-                sense.show_message("resume? -> press downwards!", text_colour = green, scroll_speed = 0.04)
+                sense.show_message("exit? -> up!", text_colour = red, scroll_speed = 0.04)
+                sense.show_message("resume? -> down!", text_colour = green, scroll_speed = 0.04)
                 event9 = sense.stick.wait_for_event(emptybuffer = True)
                 if event9.action == "pressed" and event9.direction == "up":
                     ok1 = True
