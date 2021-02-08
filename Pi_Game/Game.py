@@ -9,6 +9,7 @@ from sense_hat import SenseHat
 #from playsound import playsound
 from time import sleep
 #playsound('audio.mp3')
+import collections
 
 #VARIABILE GLOBALE (GLOBAL VARIABLES):
 sense = SenseHat()
@@ -256,8 +257,51 @@ def Storyline():
     storyline_level_4_and_5()
     afisare_imagine_de_sfarsit_de_nivel_1()
     afisare_imagine_de_sfarsit_de_nivel_2()
+
+#FUNCTIE DE INTRARE IN MAIN MENU (ENTERING MAIN MENU FUNCTION)
+
+entering_image_1 = [
+    black, black, black, saddlebrown, saddlebrown, black, black, black,
+    black, black, black, black, black, black, black, black,
+    green, green, black, black, black, black, grey, grey,
+    black, black, black, black, black, black, black, black,
+    gold, gold, black, black, black, black, cyan, cyan,
+    black, black, black, black, black, black, black, black,
+    red, red, black, black, black, black, purple, purple,
+    black, black, black, white, white, black, black, black,
+]
+
+entering_image_2 = [
+    black, black, black, saddlebrown, saddlebrown, black, black, black,
+    black, black, saddlebrown, blue, blue, saddlebrown, black, black,
+    green, green, black, black, black, black, grey, grey,
+    black, black, black, black, black, black, black, black,
+    gold, gold, black, black, black, black, cyan, cyan,
+    black, black, black, black, black, black, black, black,
+    red, red, black, black, black, black, purple, purple,
+    black, black, black, grey, grey, black, black, black,
+]
+
+entering_image_3 = [
+    black, black, black, saddlebrown, saddlebrown, black, black, black,
+    black, black, black, black, black, black, black, black,
+    green, green, black, blue, blue, black, grey, grey,
+    black, black, black, black, black, black, black, black,
+    gold, gold, black, black, black, black, cyan, cyan,
+    black, black, black, black, black, black, black, black,
+    red, red, black, black, black, black, purple, purple,
+    black, black, black, grey, grey, black, black, black,
+]
+def ENTERING_MAIN_MENU():
+    sense.set_pixels(entering_image_1)
+    sleep(0.65)
+    sense.set_pixels(entering_image_2)
+    sleep(0.65)
+    sense.set_pixels(entering_image_3)
+    
     
 #FUNCTIE DE MAIN MENU (MAIN MENU FUNCTION):
+    
 def MAIN_MENU():
     sense.show_message("Welcome", text_colour = blue, scroll_speed = 0.05)
     sense.show_message("to", text_colour = gold, scroll_speed = 0.05)
@@ -287,7 +331,8 @@ def MAIN_MENU():
         ok1 = False
         position = 0;
         while ok1 == False:
-            sense.show_message(levels[position], text_colour = gold, scroll_speed = 0.05)
+            #sense.show_message(levels[position], text_colour = gold, scroll_speed = 0.05)
+            ENTERING_MAIN_MENU()
             event2 = sense.stick.wait_for_event(emptybuffer = True)
             #IN CAZUL UNEI DORINTE NEPREVAZUTE DE A IESI DIN JOC (IN CASE OF A SUDDEN WISH FOR EXITING THE GAME)
             if event2.action == "pressed" and event2.direction == "up":
@@ -393,4 +438,5 @@ def MAIN_MENU():
 #Aici apelam toate functiile pe care le-am creat astfel incat jocul sa poata rula (Here we call all the functions we need in order for the game to load)
     
 #MAIN_MENU()
-Storyline()
+#Storyline()
+ENTERING_MAIN_MENU()
