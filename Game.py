@@ -409,8 +409,8 @@ def MAIN_MENU():
                     pixel2_y = 4
                 elif pixel1_y == 6 and pixel1_x == 4 and pixel2_y == 7 and pixel2_x == 4:
                     if is_playable[0] == 1:
-                        #Level1()
-                        unlocked()
+                        level1()
+                        #unlocked()
                     else:
                         locked()
                     pixel1_x = 2
