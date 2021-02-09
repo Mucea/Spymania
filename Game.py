@@ -32,6 +32,7 @@ coral = [255, 160, 122]
 grey = [58, 59, 60]
 toxicgreen = [97, 222, 42]
 darkgreen = [0, 100, 0]
+pink = [255, 113, 181]
 
 #Aceasta functie va afisa imaginea de sfarsit a tuturor nivelelor (This function will print the ending image for all the levels)
 imagine_de_sfarsit_bucata_1 = [
