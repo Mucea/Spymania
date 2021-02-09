@@ -330,6 +330,19 @@ def Controls():
     
 #FUNCTIE DE MAIN MENU (MAIN MENU FUNCTION):
 
+def level1():
+    level = [
+        black, black, black, black, gray, black, red, black,
+        black, pink, gold, black, gray, black, red, red,
+        black, black, black, black, gray, black, black, black,
+        gray, gray, gray, black, black, gray, blue, blue,
+        black, gold, blue, black, black, black, black, black,
+        black, black, blue, black, black, blue, blue, blue,
+        black, gold, blue, black, black, blue, saddlebrown, black,
+        gray, black, blue, black, black, blue, black, black,
+    ]
+    sense.set_pixels(level)
+
 def MAIN_MENU():
     sense.show_message("Welcome", text_colour = blue, scroll_speed = 0.05)
     sense.show_message("to", text_colour = gold, scroll_speed = 0.05)
