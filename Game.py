@@ -242,7 +242,7 @@ def storyline_level_1():
     #sleep(1)
 
 def storyline_level_2():
-    field = [
+    field1 = [
         gold, gold, cyan, white, white, cyan, cyan, cyan,
         gold, cyan, cyan, cyan, cyan, cyan, white, white,
         cyan, white, white, cyan, cyan, cyan, cyan, cyan,
@@ -252,7 +252,46 @@ def storyline_level_2():
         green, darkgreen, green, green, green, green, darkgreen, green,
         green, green, green, green, green, green, green, green,
     ]
-    sense.set_pixels(field)
+    field2 = [
+        gold, gold, cyan, cyan, white, white, cyan, cyan,
+        gold, cyan, cyan, cyan, cyan, white, white, cyan,
+        cyan, cyan, white, white, cyan, cyan, cyan, cyan,
+        green, green, green, green, green, green, green, green,
+        green, green, green, green, blue, green, green, green,
+        green, red, green, green, darkgreen, green, purple, green,
+        green, darkgreen, green, green, green, green, darkgreen, green,
+        green, green, green, green, green, green, green, green,
+    ]
+    field3 = [
+        gold, gold, cyan, cyan, cyan, white, white, cyan,
+        gold, cyan, cyan, cyan, white, white, cyan, cyan,
+        cyan, cyan, cyan, white, white, cyan, cyan, cyan,
+        green, green, green, green, green, green, green, green,
+        green, green, green, green, blue, green, green, green,
+        green, red, green, green, darkgreen, green, purple, green,
+        green, darkgreen, green, green, green, green, darkgreen, green,
+        green, green, green, green, green, green, green, green,
+    ]
+    field4 = [
+        gold, gold, cyan, cyan, cyan, cyan, white, white,
+        gold, cyan, cyan, white, white, cyan, cyan, cyan,
+        cyan, cyan, cyan, cyan, white, white, cyan, cyan,
+        green, green, green, green, green, green, green, green,
+        green, green, green, green, blue, green, green, green,
+        green, red, green, green, darkgreen, green, purple, green,
+        green, darkgreen, green, green, green, green, darkgreen, green,
+        green, green, green, green, green, green, green, green,
+    ]
+    field5 = [
+        gold, gold, cyan, cyan, cyan, cyan, cyan, white,
+        gold, cyan, white, white, cyan, cyan, cyan, cyan,
+        cyan, cyan, cyan, cyan, cyan, white, white, cyan,
+        green, green, green, green, green, green, green, green,
+        green, green, green, green, blue, green, green, green,
+        green, red, green, green, darkgreen, green, purple, green,
+        green, darkgreen, green, green, green, green, darkgreen, green,
+        green, green, green, green, green, green, green, green,
+    ]
     """
     #AICI SCRIEM STORYLINE-UL PENTRU AL DOILEA NIVEL (HERE WE WRITE THE STORYLINE FOR THE SECOND LEVEL)
     text2 = ""
@@ -260,10 +299,23 @@ def storyline_level_2():
     for word in storyline2:
         print(word)
     """
-    sleep(5)
+    for i in range(5):
+        sense.set_pixels(field1)
+        sleep(0.5)
+        sense.set_pixels(field2)
+        sleep(0.5)
+        sense.set_pixels(field3)
+        sleep(0.5)
+        sense.set_pixels(field4)
+        sleep(0.5)
+        sense.set_pixels(field5)
+        sleep(0.5)
+    #sleep(5)
     sense.clear()
+    #sleep(1)
+    
 def storyline_level_3():
-    castle = [
+    castle1 = [
         black, red, black, black, black, black, red, black,
         red, red, red, black, black, red, red, red,
         grey, black, grey, black, black, grey, black, grey,
@@ -273,7 +325,46 @@ def storyline_level_3():
         grey, grey, grey, saddlebrown, saddlebrown, grey, grey, grey,
         grey, grey, grey, saddlebrown, saddlebrown, grey, grey, grey,
     ]
-    sense.set_pixels(castle)
+    castle2 = [
+        black, red, black, black, black, black, red, black,
+        red, red, red, black, black, red, red, red,
+        grey, black, grey, black, black, grey, black, grey,
+        grey, grey, grey, grey, grey, grey, grey, grey,
+        grey, grey, grey, grey, grey, grey, grey, grey,
+        grey, grey, grey, black, black, grey, grey, grey,
+        grey, grey, grey, saddlebrown, saddlebrown, grey, grey, grey,
+        grey, grey, grey, saddlebrown, saddlebrown, grey, grey, grey,
+    ]
+    castle3 = [
+        black, red, black, black, black, black, red, black,
+        red, red, red, black, black, red, red, red,
+        grey, black, grey, black, black, grey, black, grey,
+        grey, grey, grey, grey, grey, grey, grey, grey,
+        grey, grey, grey, grey, grey, grey, grey, grey,
+        grey, grey, grey, black, black, grey, grey, grey,
+        grey, grey, grey, black, black, grey, grey, grey,
+        grey, grey, grey, saddlebrown, saddlebrown, grey, grey, grey,
+    ]
+    castle4 = [
+        black, red, black, black, black, black, red, black,
+        red, red, red, black, black, red, red, red,
+        grey, black, grey, black, black, grey, black, grey,
+        grey, grey, grey, grey, grey, grey, grey, grey,
+        grey, grey, grey, grey, grey, grey, grey, grey,
+        grey, grey, grey, black, black, grey, grey, grey,
+        grey, grey, grey, black, black, grey, grey, grey,
+        grey, grey, grey, black, black, grey, grey, grey,
+    ]
+    castle5 = [
+        black, red, black, black, black, black, red, black,
+        red, red, red, black, black, red, red, red,
+        grey, black, grey, black, black, grey, black, grey,
+        grey, red, grey, grey, grey, grey, red, grey,
+        red, red, red, grey, grey, red, red, red,
+        grey, red, grey, black, black, grey, red, grey,
+        grey, grey, grey, black, black, grey, grey, grey,
+        grey, grey, grey, black, black, grey, grey, grey,
+    ]
     """
     #AICI SCRIEM STORYLINE-UL PENTRU AL TREILEA NIVEL (HERE WE WRITE THE STORYLINE FOR THE THIRD LEVEL)
     text3 = ""
@@ -281,12 +372,23 @@ def storyline_level_3():
     for word in storyline3:
         print(word)
     """
-    sleep(5)
+    for i in range(5):
+        sense.set_pixels(castle1)
+        sleep(0.5)
+        sense.set_pixels(castle2)
+        sleep(0.5)
+        sense.set_pixels(castle3)
+        sleep(0.5)
+        sense.set_pixels(castle4)
+        sleep(0.5)
+        sense.set_pixels(castle5)
+        sleep(0.5)
+    #sleep(5)
     sense.clear()
     #sleep(1)
 
 def storyline_level_4_and_5():
-    boss = [
+    boss1 = [
         red, black, black, black, black, black, black, red,
         red, red, black, black, black, black, red, red,
         black, red, red, red, red, red, red, black,
@@ -296,7 +398,46 @@ def storyline_level_4_and_5():
         black, toxicgreen, toxicgreen, toxicgreen, toxicgreen, toxicgreen, red, black,
         black, toxicgreen, red, red, red, toxicgreen, black, black,
     ]
-    sense.set_pixels(boss)
+    boss2 = [
+        red, black, black, black, black, black, black, red,
+        red, red, black, black, black, black, red, red,
+        black, red, red, red, red, red, red, black,
+        black, red, blue, black, black, blue, red, black,
+        red, black, gold, blue, blue, gold, black, red,
+        red, toxicgreen, black, black, black, black, toxicgreen, red,
+        black, red, toxicgreen, toxicgreen, toxicgreen, toxicgreen, red, black,
+        black, toxicgreen, red, red, red, red, black, black,
+    ]
+    boss3 = [
+        red, black, black, black, black, black, black, red,
+        red, red, black, black, black, black, red, red,
+        black, red, red, red, red, red, red, black,
+        black, red, blue, black, black, blue, red, black,
+        red, black, gold, blue, blue, gold, black, red,
+        red, toxicgreen, black, black, black, black, toxicgreen, red,
+        black, red, toxicgreen, toxicgreen, toxicgreen, toxicgreen, red, black,
+        black, black, red, red, red, red, black, black,
+    ]
+    boss4 = [
+        red, black, black, black, black, black, black, red,
+        red, red, black, black, black, black, red, red,
+        black, red, red, red, red, red, red, black,
+        black, red, blue, black, black, blue, red, black,
+        red, black, gold, blue, blue, gold, black, red,
+        red, toxicgreen, black, black, black, black, toxicgreen, red,
+        black, toxicgreen, toxicgreen, toxicgreen, toxicgreen, toxicgreen, red, black,
+        black, black, red, red, red, red, black, black,
+    ]
+    boss5 = [
+        red, black, black, black, black, black, black, red,
+        red, red, black, black, black, black, red, red,
+        black, red, red, red, red, red, red, black,
+        black, red, blue, black, black, blue, red, black,
+        red, black, gold, blue, blue, gold, black, red,
+        red, toxicgreen, black, black, black, black, toxicgreen, red,
+        black, toxicgreen, toxicgreen, toxicgreen, toxicgreen, toxicgreen, red, black,
+        black, black, red, red, red, toxicgreen, black, black,
+    ]
     """
     #AICI SCRIEM STORYLINE-UL PENTRU AL PATRULEA SI AL CINCILEA NIVEL (HERE WE WRITE THE STORYLINE FOR THE FOURTH AND THE FIFTH LEVEL)
     text4_5 = ""
@@ -304,9 +445,21 @@ def storyline_level_4_and_5():
     for word in storyline4_5:
         print(word)
     """
-    sleep(5)
+    for i in range(5):
+        sense.set_pixels(boss1)
+        sleep(0.5)
+        sense.set_pixels(boss2)
+        sleep(0.5)
+        sense.set_pixels(boss3)
+        sleep(0.5)
+        sense.set_pixels(boss4)
+        sleep(0.5)
+        sense.set_pixels(boss5)
+        sleep(0.5)
+    #sleep(5)
     sense.clear()
     #sleep(1)
+    
 def Storyline():
     storyline_level_1()
     storyline_level_2()
