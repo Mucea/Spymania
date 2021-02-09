@@ -5,11 +5,13 @@ David Ghergut
 Mihai Pangratie
 """
 #Aici importam toate modulele de python de care avem nevoie in tot programul (Here we import all the python modules that we need in the whole program)
-from sense_hat import SenseHat
+from sense_emu import SenseHat
 from time import sleep
 import collections
 #from playsound import playsound
-from pygame import mixer
+from pygame import *
+import threading
+#from time import clock
 
 #VARIABILE GLOBALE (GLOBAL VARIABLES):
 sense = SenseHat()
@@ -33,6 +35,8 @@ grey = [58, 59, 60]
 toxicgreen = [97, 222, 42]
 darkgreen = [0, 100, 0]
 pink = [255, 113, 181]
+yellow = [255, 255, 0]
+darkbrown = [101, 67, 33]
 
 #Aceasta functie va afisa imaginea de sfarsit a tuturor nivelelor (This function will print the ending image for all the levels)
 imagine_de_sfarsit_bucata_1 = [
@@ -165,17 +169,56 @@ def unlocked():
     
 #FUNCTIE PENTRU STORYLINE (FUNCTION FOR THE STORYLINE)
 def storyline_level_1():
-    tree = [
-         black, green, green, green, green, green, green, black,
-         black, green, green, green, green, green, green, black,
-         black, green, green, green, green, green, green, black,
-         black, green, green, green, green, green, green, black,
-         black, green, green, green, green, green, green, black,
-         black, black, black, saddlebrown, saddlebrown, black, black, black,
-         black, black, black, saddlebrown, saddlebrown, black, black, black,
-         black, black, black, saddlebrown, saddlebrown, black, black, black,
+    fire1 = [
+        black, black, black, black, black, black, black, black,
+        black, black, black, black, black, black, black, black,
+        black, black, black, red, red, black, black, black,
+        black, black, black, red, orange, red, black, black,
+        black, black, red, orange, yellow, orange, red, black,
+        black, red, orange, yellow, yellow, orange, red, black,
+        black, darkbrown, darkbrown, yellow, yellow, darkbrown, darkbrown, black,
+        black, black, darkbrown, darkbrown, darkbrown, darkbrown, black, black,
     ]
-    sense.set_pixels(tree)
+    fire2 = [
+        black, black, black, black, black, black, black, black,
+        black, black, black, black, red, black, black, black,
+        black, black, black, red, red, red, black, black,
+        black, black, black, red, orange, red, black, black,
+        black, black, red, orange, yellow, orange, red, black,
+        black, red, orange, yellow, yellow, orange, red, black,
+        black, darkbrown, darkbrown, yellow, yellow, darkbrown, darkbrown, black,
+        black, black, darkbrown, darkbrown, darkbrown, darkbrown, black, black,
+    ]
+    fire3 = [
+        black, black, black, black, black, black, black, black,
+        black, black, black, black, black, red, black, black,
+        black, black, black, black, red, red, red, black,
+        black, black, black, red, orange, orange, red, black,
+        black, black, red, orange, yellow, orange, red, black,
+        black, red, orange, yellow, yellow, orange, red, black,
+        black, darkbrown, darkbrown, yellow, yellow, darkbrown, darkbrown, black,
+        black, black, darkbrown, darkbrown, darkbrown, darkbrown, black, black,
+    ]
+    fire4 = [
+        black, black, black, black, black, black, red, black,
+        black, black, black, black, black, red, red, black,
+        black, black, black, black, red, black, black, black,
+        black, black, black, red, orange, red, black, black,
+        black, black, red, orange, yellow, orange, red, black,
+        black, red, orange, yellow, yellow, orange, red, black,
+        black, darkbrown, darkbrown, yellow, yellow, darkbrown, darkbrown, black,
+        black, black, darkbrown, darkbrown, darkbrown, darkbrown, black, black,
+    ]
+    fire5 = [
+        black, black, black, black, black, black, red, black,
+        black, black, black, black, black, black, black, black,
+        black, black, black, red, red, black, black, black,
+        black, black, black, red, orange, red, black, black,
+        black, black, red, orange, yellow, orange, red, black,
+        black, red, orange, yellow, yellow, orange, red, black,
+        black, darkbrown, darkbrown, yellow, yellow, darkbrown, darkbrown, black,
+        black, black, darkbrown, darkbrown, darkbrown, darkbrown, black, black,
+    ]
     """
     #AICI SCRIEM STORYLINE-UL PENTRU PRIMUL NIVEL (HERE WE WRITE THE STORYLINE FOR THE FIRST LEVEL)
     text1 = ""
@@ -183,7 +226,18 @@ def storyline_level_1():
     for word in storyline1:
         print(word)
     """
-    sleep(5)
+    for i in range(5):
+        sense.set_pixels(fire1)
+        sleep(0.5)
+        sense.set_pixels(fire2)
+        sleep(0.5)
+        sense.set_pixels(fire3)
+        sleep(0.5)
+        sense.set_pixels(fire4)
+        sleep(0.5)
+        sense.set_pixels(fire5)
+        sleep(0.5)
+    #sleep(5)
     sense.clear()
     #sleep(1)
 
@@ -270,7 +324,7 @@ entering_image_1 = [
     black, black, black, black, black, black, black, black,
     grey, grey, black, black, black, black, purple, purple,
     black, black, black, black, black, black, black, black,
-    gold, orange, black, black, black, black, green, green,
+    gold, orange, black, black, black, black, darkbrown, orange,
     black, black, black, black, black, black, black, black,
     red, red, black, black, black, black, cyan, cyan,
     black, black, black, coral, coral, black, black, black,
@@ -281,7 +335,7 @@ entering_image_2 = [
     black, black, saddlebrown, blue, blue, saddlebrown, black, black,
     grey, grey, black, black, black, black, purple, purple,
     black, black, black, black, black, black, black, black,
-    gold, orange, black, black, black, black, green, green,
+    gold, orange, black, black, black, black, darkbrown, orange,
     black, black, black, black, black, black, black, black,
     red, red, black, black, black, black, cyan, cyan,
     black, black, black, coral, coral, black, black, black,
@@ -292,7 +346,7 @@ entering_image_3 = [
     black, black, black, black, black, black, black, black,
     grey, grey, black, blue, blue, black, purple, purple,
     black, black, black, black, black, black, black, black,
-    gold, orange, black, black, black, black, green, green,
+    gold, orange, black, black, black, black, darkbrown, orange,
     black, black, black, black, black, black, black, black,
     red, red, black, black, black, black, cyan, cyan,
     black, black, black, coral, coral, black, black, black,
@@ -303,7 +357,7 @@ reset = [
     black, black, black, black, black, black, black, black,
     grey, grey, black, black, black, black, purple, purple,
     black, black, black, black, black, black, black, black,
-    gold, orange, black, black, black, black, green, green,
+    gold, orange, black, black, black, black, darkbrown, orange,
     black, black, black, black, black, black, black, black,
     red, red, black, black, black, black, cyan, cyan,
     black, black, black, coral, coral, black, black, black,
@@ -322,7 +376,7 @@ def Controls():
     print("Blue -> Vector (you)")
     print("Brown -> doors that lead to exit")
     print("Purple -> Storyline")
-    print("Green -> Level 1")
+    print("Darkbrown & Orange -> Level 1")
     print("Cyan -> Level 2")
     print("Grey -> Level 3")
     print("Gold & orange -> Level 4")
@@ -345,16 +399,13 @@ def Level1():
     sense.set_pixels(image_level1)
     sleep(5)
     is_playable[1] = 1
-    sense.clear()
+    afisare_imagine_de_sfarsit_de_nivel_1()
+    afisare_imagine_de_sfarsit_de_nivel_2()
     ENTERING_MAIN_MENU()
 
 #FUNCTIE DE MAIN MENU (MAIN MENU FUNCTION):
 
 def MAIN_MENU():
-    #INITIALIZAM FISIERUL MP3 PENTRU A FI RULAT
-    mixer.init()
-    mixer.music.load("/home/pi/Desktop/Spymania/mainmenu.mp3")
-    mixer.music.set_volume(0.7)
     sense.show_message("Welcome", text_colour = blue, scroll_speed = 0.05)
     sense.show_message("to", text_colour = gold, scroll_speed = 0.05)
     sense.show_message("Spymania!", text_colour = green, scroll_speed = 0.05)
@@ -373,14 +424,19 @@ def MAIN_MENU():
         ENTERING_MAIN_MENU()
         #playsound('/home/pi/Desktop/Spymania/mainmenu.mp3')
         position = 0;
-        #while ok2 == False:
-        while True:
-            mixer.music.play()    
+        #INITIALIZAM FISIERUL MP3 PENTRU A FI RULAT
+        #mixer.init()
+        #mixer.music.load("/home/pi/Desktop/Spymania/mainmenu.mp3")
+        #mixer.music.set_volume(0.7)
+        #clock = time.Clock()
+        #clock.tick(10)
+        #while mixer.music.get_busy():
+        #    clock.tick(10)
         while ok1 == False:   
             event2 = sense.stick.wait_for_event(emptybuffer = True)
             if event2.action == "pressed" and event2.direction == "middle":
                 if pixel1_y == 3 and pixel1_x == 0 and pixel2_y == 4 and pixel2_x == 0:
-                    mixer.music.stop()
+                    #mixer.music.stop()
                     sense.show_message("exit? -> up!", text_colour = red, scroll_speed = 0.04)
                     sense.show_message("resume? -> down!", text_colour = green, scroll_speed = 0.04)
                     event9 = sense.stick.wait_for_event(emptybuffer = True)
@@ -403,14 +459,14 @@ def MAIN_MENU():
                         pixel2_y = 4
                         event2 = sense.stick.wait_for_event(emptybuffer = True)
                 elif pixel1_y == 6 and pixel1_x == 2 and pixel2_y == 7 and pixel2_x == 2:
-                    mixer.music.stop()
+                    #mixer.music.stop()
                     Storyline()
                     pixel1_x = 2
                     pixel1_y = 3
                     pixel2_x = 2
                     pixel2_y = 4
                 elif pixel1_y == 6 and pixel1_x == 4 and pixel2_y == 7 and pixel2_x == 4:
-                    mixer.music.stop()
+                    #mixer.music.stop()
                     if is_playable[0] == 1:
                         Level1()
                         #unlocked()
@@ -421,7 +477,7 @@ def MAIN_MENU():
                     pixel2_x = 2
                     pixel2_y = 4
                 elif pixel1_y == 6 and pixel1_x == 6 and pixel2_y == 7 and pixel2_x == 6:
-                    mixer.music.stop()
+                    #mixer.music.stop()
                     if is_playable[1] == 1:
                         #Level2()
                         unlocked()
@@ -432,7 +488,7 @@ def MAIN_MENU():
                     pixel2_x = 2
                     pixel2_y = 4
                 elif pixel1_y == 0 and pixel1_x == 2 and pixel2_y == 1 and pixel2_x == 2:
-                    mixer.music.stop()
+                    #mixer.music.stop()
                     if is_playable[2] == 1:
                         #Level3()
                         unlocked()
@@ -443,7 +499,7 @@ def MAIN_MENU():
                     pixel2_x = 2
                     pixel2_y = 4
                 elif pixel1_y == 0 and pixel1_x == 4 and pixel2_y == 1 and pixel2_x == 4:
-                    mixer.music.stop()
+                    #mixer.music.stop()
                     if is_playable[3] == 1:
                         #Level4()
                         unlocked()
@@ -454,7 +510,7 @@ def MAIN_MENU():
                     pixel2_x = 2
                     pixel2_y = 4
                 elif pixel1_y == 0 and pixel1_x == 6 and pixel2_y == 1 and pixel2_x == 6:
-                    mixer.music.stop()
+                    #mixer.music.stop()
                     if is_playable[4] == 1:
                         #Level5()
                         unlocked()
@@ -495,9 +551,9 @@ def MAIN_MENU():
                 if pixels[33] == black:
                     sense.set_pixel(1, 4, orange)
                 if pixels[38] == black:
-                    sense.set_pixel(6, 4, green)
+                    sense.set_pixel(6, 4, darkbrown)
                 if pixels[39] == black:
-                    sense.set_pixel(7, 4, green)
+                    sense.set_pixel(7, 4, orange)
                 if pixels[48] == black:
                     sense.set_pixel(0, 6, red)
                 if pixels[49] == black:
